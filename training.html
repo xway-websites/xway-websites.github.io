@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Training | Xway Technologies India</title>
+<meta name="description" content="Practical AI and DevOps tools training with real labs: CI/CD, Kubernetes, Terraform, observability, SRE and threat modelling.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="logo" href="index.html"><i>X</i>Xway Technologies India</a>
+  <button class="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav id="nav" aria-label="Main"><ul>
+    <li><a href="index.html">Services</a></li>
+    <li><a href="training.html" aria-current="page">Training</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul></nav>
+</div></header>
+
+<main>
+<section>
+  <div class="wrap">
+    <h1>Training built around real work</h1>
+    <p class="lead">Every course is mostly hands-on. Your team builds pipelines, breaks clusters, handles mock incidents and models threats on realistic systems, taught by engineers who run production.</p>
+    <div class="cta"><a class="btn" href="index.html#contact">Request a syllabus</a></div>
+  </div>
+</section>
+
+<section class="alt" id="ai">
+  <div class="wrap">
+    <h2>AI training</h2>
+    <p class="lead">Practical AI for engineers and operations teams, not theory lectures.</p>
+    <div class="grid">
+      <article class="box"><h3>AI for DevOps and SRE</h3><ul><li>Summarise logs and incident timelines with LLMs</li><li>Draft runbooks and postmortems, then review them</li><li>Alert triage assistants with human approval</li></ul></article>
+      <article class="box"><h3>Build with generative AI</h3><ul><li>Prompt design and structured outputs</li><li>Question answering over your own documents (RAG)</li><li>Evaluating and monitoring AI features</li></ul></article>
+      <article class="box"><h3>AI for professionals</h3><ul><li>Everyday workflows for managers and analysts</li><li>Data privacy and responsible use</li><li>Choosing where AI helps and where it does not</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section id="devops">
+  <div class="wrap">
+    <h2>DevOps, SRE and security tools</h2>
+    <p class="lead">Learn the tools by using them on a working example application.</p>
+    <div class="grid">
+      <article class="box"><h3>CI/CD and Git</h3><ul><li>Git workflows and code review</li><li>GitHub Actions and Jenkins pipelines</li><li>Argo CD and GitOps releases</li></ul></article>
+      <article class="box"><h3>Containers and Kubernetes</h3><ul><li>Docker images and registries</li><li>Deployments, services and autoscaling</li><li>Debugging failing pods</li></ul></article>
+      <article class="box"><h3>Infrastructure as code</h3><ul><li>Terraform modules and state</li><li>Ansible playbooks</li><li>Reviewing changes safely</li></ul></article>
+      <article class="box"><h3>SRE and observability</h3><ul><li>SLOs and error-budget alerts</li><li>Prometheus, Grafana and OpenTelemetry</li><li>Incident drills and postmortems</li></ul></article>
+      <article class="box"><h3>Threat modelling</h3><ul><li>Data flow diagrams and STRIDE</li><li>Abuse cases for APIs and cloud setups</li><li>Turning risks into backlog tasks</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="labs">
+  <div class="wrap">
+    <h2>Example labs</h2>
+    <p class="lead">A sample of what participants do. Tap a lab to open it.</p>
+    <details open><summary>Lab: deploy on every merge</summary>
+      <p>Build a pipeline that tests a service, builds a container image and deploys it to a Kubernetes cluster, with a one-click rollback.</p>
+<pre>name: deploy
+on: { push: { branches: [main] } }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: make test
+      - run: docker build -t app:${{ github.sha }} .
+      - run: kubectl set image deploy/app app=app:${{ github.sha }}</pre></details>
+    <details><summary>Lab: alert on error budget burn</summary>
+      <p>Define a 99.9% availability SLO and write an alert that fires when the budget is burning too fast, not on every blip.</p>
+<pre>- alert: HighErrorBudgetBurn
+  expr: |
+    sum(rate(http_requests_total{code=~"5.."}[1h]))
+    / sum(rate(http_requests_total[1h])) &gt; 14.4 * 0.001
+  for: 5m
+  labels: { severity: page }</pre></details>
+    <details><summary>Lab: threat model a payments API</summary>
+      <p>Draw the data flow, mark trust boundaries and apply STRIDE. End with a ranked list of risks, each with an owner and a fix.</p></details>
+    <details><summary>Lab: AI-assisted incident summary</summary>
+      <p>Feed sanitised logs from a mock outage to an LLM, produce a timeline, then check every claim against the source logs.</p></details>
+    <details><summary>Lab: mock outage day</summary>
+      <p>Teams are paged for a failing release, find the cause with dashboards and logs, restore service and write the postmortem.</p></details>
+  </div>
+</section>
+
+<section id="formats">
+  <div class="wrap two">
+    <div>
+      <h2>Formats</h2>
+      <ul>
+        <li>Live online or on-site at your office</li>
+        <li>Weekday and weekend batches for individuals</li>
+        <li>Custom corporate programs on your stack</li>
+        <li>Optional support after training</li>
+      </ul>
+      <p>Durations, fees and certificates are shared on request. Replace this with your confirmed course list before launch.</p>
+    </div>
+    <div class="box">
+      <h3>Plan a training</h3>
+      <p>Tell us your team size, tools and goals. We will send a syllabus and schedule.</p>
+      <a class="btn" href="index.html#contact">Request a syllabus</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <span>© <span data-year>2026</span> Xway Technologies India Private Limited</span>
+  <span><a href="#">Privacy policy</a> &nbsp; <a href="#">Terms</a></span>
+</div></footer>
+<script src="script.js"></script>
+</body>
+</html>
